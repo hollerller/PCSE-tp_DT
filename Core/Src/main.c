@@ -22,9 +22,16 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+
+#include <stdint.h>
+#include <stdio.h>
+#include <string.h>
+
 #include "API_delay.h"
-#include "API_uart.h"
 #include "API_i2c.h"
+#include "API_controlFSM.h"
+#include "driver_BME280.h"
+#include "API_uart.h"
 #include "API_LCD.h"
 
 /* USER CODE END Includes */
@@ -98,9 +105,12 @@ int main(void)
 
   /* USER CODE BEGIN 2 */
 
-  uartInit();
-  i2c_Init();
+  uartInit();		// Initializes the uart protocol
+  i2c_Init();		// initializes the I2C protocol
 
+  BME280_init();	// Initializes the sensor with the initial parameters
+  controlFSM_init();// Initializes the FSM
+  HAL_Delay(500);
 
 
   /* USER CODE END 2 */
@@ -112,6 +122,19 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
+	  BME280_calculate();
+	      controlFSM_update();
+
+		  char dataStr[255] = "";
+
+		  sprintf(dataStr, "Temperature: %.2f Humidity: %.2f \r\n", temp, hum);
+
+		  uartSendString((uint8_t *)dataStr);
+
+	      HAL_Delay(500);
+
+
   }
   /* USER CODE END 3 */
 }

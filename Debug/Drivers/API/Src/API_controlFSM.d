@@ -1,4 +1,5 @@
-Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
+Drivers/API/Src/API_controlFSM.o: ../Drivers/API/Src/API_controlFSM.c \
+ /Users/hollerller/Documents/UBA/CESE/PCSE/PCSE-tp_DT/Drivers/API/Inc/driver_BME280.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -28,12 +29,9 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  /Users/hollerller/Documents/UBA/CESE/PCSE/PCSE-tp_DT/Drivers/API/Inc/API_delay.h \
- /Users/hollerller/Documents/UBA/CESE/PCSE/PCSE-tp_DT/Drivers/API/Inc/API_i2c.h \
- /Users/hollerller/Documents/UBA/CESE/PCSE/PCSE-tp_DT/Drivers/API/Inc/API_controlFSM.h \
- /Users/hollerller/Documents/UBA/CESE/PCSE/PCSE-tp_DT/Drivers/API/Inc/driver_BME280.h \
- /Users/hollerller/Documents/UBA/CESE/PCSE/PCSE-tp_DT/Drivers/API/Inc/API_uart.h \
- /Users/hollerller/Documents/UBA/CESE/PCSE/PCSE-tp_DT/Drivers/API/Inc/API_LCD.h
-../Core/Inc/main.h:
+ ../Core/Inc/main.h \
+ /Users/hollerller/Documents/UBA/CESE/PCSE/PCSE-tp_DT/Drivers/API/Inc/API_controlFSM.h
+/Users/hollerller/Documents/UBA/CESE/PCSE/PCSE-tp_DT/Drivers/API/Inc/driver_BME280.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
@@ -63,8 +61,5 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
 /Users/hollerller/Documents/UBA/CESE/PCSE/PCSE-tp_DT/Drivers/API/Inc/API_delay.h:
-/Users/hollerller/Documents/UBA/CESE/PCSE/PCSE-tp_DT/Drivers/API/Inc/API_i2c.h:
+../Core/Inc/main.h:
 /Users/hollerller/Documents/UBA/CESE/PCSE/PCSE-tp_DT/Drivers/API/Inc/API_controlFSM.h:
-/Users/hollerller/Documents/UBA/CESE/PCSE/PCSE-tp_DT/Drivers/API/Inc/driver_BME280.h:
-/Users/hollerller/Documents/UBA/CESE/PCSE/PCSE-tp_DT/Drivers/API/Inc/API_uart.h:
-/Users/hollerller/Documents/UBA/CESE/PCSE/PCSE-tp_DT/Drivers/API/Inc/API_LCD.h:

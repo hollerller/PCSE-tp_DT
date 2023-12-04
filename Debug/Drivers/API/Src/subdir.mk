@@ -6,6 +6,7 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Drivers/API/Src/API_LCD.c \
+../Drivers/API/Src/API_controlFSM.c \
 ../Drivers/API/Src/API_delay.c \
 ../Drivers/API/Src/API_i2c.c \
 ../Drivers/API/Src/API_uart.c \
@@ -13,6 +14,7 @@ C_SRCS += \
 
 OBJS += \
 ./Drivers/API/Src/API_LCD.o \
+./Drivers/API/Src/API_controlFSM.o \
 ./Drivers/API/Src/API_delay.o \
 ./Drivers/API/Src/API_i2c.o \
 ./Drivers/API/Src/API_uart.o \
@@ -20,6 +22,7 @@ OBJS += \
 
 C_DEPS += \
 ./Drivers/API/Src/API_LCD.d \
+./Drivers/API/Src/API_controlFSM.d \
 ./Drivers/API/Src/API_delay.d \
 ./Drivers/API/Src/API_i2c.d \
 ./Drivers/API/Src/API_uart.d \
@@ -33,7 +36,7 @@ Drivers/API/Src/%.o Drivers/API/Src/%.su Drivers/API/Src/%.cyclo: ../Drivers/API
 clean: clean-Drivers-2f-API-2f-Src
 
 clean-Drivers-2f-API-2f-Src:
-	-$(RM) ./Drivers/API/Src/API_LCD.cyclo ./Drivers/API/Src/API_LCD.d ./Drivers/API/Src/API_LCD.o ./Drivers/API/Src/API_LCD.su ./Drivers/API/Src/API_delay.cyclo ./Drivers/API/Src/API_delay.d ./Drivers/API/Src/API_delay.o ./Drivers/API/Src/API_delay.su ./Drivers/API/Src/API_i2c.cyclo ./Drivers/API/Src/API_i2c.d ./Drivers/API/Src/API_i2c.o ./Drivers/API/Src/API_i2c.su ./Drivers/API/Src/API_uart.cyclo ./Drivers/API/Src/API_uart.d ./Drivers/API/Src/API_uart.o ./Drivers/API/Src/API_uart.su ./Drivers/API/Src/driver_BME280.cyclo ./Drivers/API/Src/driver_BME280.d ./Drivers/API/Src/driver_BME280.o ./Drivers/API/Src/driver_BME280.su
+	-$(RM) ./Drivers/API/Src/API_LCD.cyclo ./Drivers/API/Src/API_LCD.d ./Drivers/API/Src/API_LCD.o ./Drivers/API/Src/API_LCD.su ./Drivers/API/Src/API_controlFSM.cyclo ./Drivers/API/Src/API_controlFSM.d ./Drivers/API/Src/API_controlFSM.o ./Drivers/API/Src/API_controlFSM.su ./Drivers/API/Src/API_delay.cyclo ./Drivers/API/Src/API_delay.d ./Drivers/API/Src/API_delay.o ./Drivers/API/Src/API_delay.su ./Drivers/API/Src/API_i2c.cyclo ./Drivers/API/Src/API_i2c.d ./Drivers/API/Src/API_i2c.o ./Drivers/API/Src/API_i2c.su ./Drivers/API/Src/API_uart.cyclo ./Drivers/API/Src/API_uart.d ./Drivers/API/Src/API_uart.o ./Drivers/API/Src/API_uart.su ./Drivers/API/Src/driver_BME280.cyclo ./Drivers/API/Src/driver_BME280.d ./Drivers/API/Src/driver_BME280.o ./Drivers/API/Src/driver_BME280.su
 
 .PHONY: clean-Drivers-2f-API-2f-Src
 
