@@ -11,8 +11,6 @@
 // Define the function prototypes for I2C
 
 #include <string.h>
-//#include <stdint.h>
-
 #include "stm32f4xx_hal.h"
 #include "API_delay.h"
 
