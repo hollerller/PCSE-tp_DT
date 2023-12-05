@@ -10,7 +10,8 @@
 
 void LCD_init();
 void LCD_sendCMD(char cmd);
-void LCD_sendByte(char data);
+void LCD_sendChar(char caracter);
+//void LCD_sendByte(char data);
 
 
 
