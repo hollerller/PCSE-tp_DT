@@ -17,6 +17,7 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+#include <driver_LCD.h>
 #include "main.h"
 
 
@@ -32,7 +33,6 @@
 #include "API_controlFSM.h"
 #include "driver_BME280.h"
 #include "API_uart.h"
-#include "API_LCD.h"
 
 /* USER CODE END Includes */
 
