@@ -1,3 +1,4 @@
-../Drivers/API/Src/driver_LCD.c:19:6:LCD_init	8	static
-../Drivers/API/Src/driver_LCD.c:32:6:LCD_sendCMD	24	static
-../Drivers/API/Src/driver_LCD.c:49:6:LCD_sendChar	24	static
+../Drivers/API/Src/driver_LCD.c:20:6:LCD_init	8	static
+../Drivers/API/Src/driver_LCD.c:45:6:LCD_sendCMD	24	static
+../Drivers/API/Src/driver_LCD.c:62:6:LCD_sendChar	24	static
+../Drivers/API/Src/driver_LCD.c:81:6:LCD_sendString	24	static

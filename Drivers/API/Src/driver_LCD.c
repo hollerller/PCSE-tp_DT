@@ -11,6 +11,7 @@
 #include "driver_LCD.h"
 #include "API_delay.h"
 #include "API_i2c.h"
+#include <string.h>
 
 #define INITIALDELAY 20
 
@@ -25,6 +26,18 @@ void LCD_init(){
 	HAL_Delay(1);
 	LCD_sendCMD(0x30);
 	LCD_sendCMD(0x20);
+
+	// Initial settings
+
+	LCD_sendCMD(0x28); 	// Function set DL = 0 (4 bit mode) N = 1 (2 Lines) F = - (5x7 style)
+	LCD_sendCMD(0x08);	// Display Switch off
+	LCD_sendCMD(0x01);	// Clear display
+	HAL_Delay(2);
+	LCD_sendCMD(0x06);	// Entry mode
+	LCD_sendCMD(0x0C);	// Display Switch on
+	LCD_sendCMD(0x01);	// Clear display
+	HAL_Delay(2);
+
 
 }
 
@@ -64,5 +77,16 @@ void LCD_sendChar(char caracter){
 
 }
 
+
+void LCD_sendString(char * text){
+
+	uint16_t size = strlen(text);
+
+	for (uint8_t i = 0 ; i < size; i ++) {
+		LCD_sendChar(*text);
+		text++;
+	}
+
+}
 
 //void LCD_sendByte(char data);

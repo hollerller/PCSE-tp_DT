@@ -108,7 +108,15 @@ int main(void) {
 	BME280_init();	// Initializes the sensor with the initial parameters
 	controlFSM_init();	// Initializes the FSM
 	LCD_init();		// Initializes the LCD
-	HAL_Delay(500);
+
+	//char a[16] = "Patrocinado por";
+	//LCD_sendString(a);
+	//HAL_Delay(500);
+	//LCD_sendCMD(0xC0);
+
+	//char b[16] = "Asotoba";
+	//		LCD_sendString(b);
+//	HAL_Delay(500);
 
 	/* USER CODE END 2 */
 
