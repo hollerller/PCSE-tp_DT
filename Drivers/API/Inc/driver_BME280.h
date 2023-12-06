@@ -20,7 +20,7 @@ extern float hum;   // Used to read the humidity values outside this function
  * 		- Refer to datasheet page 26 >> 5. Global memory map and register description
  *
  */
-void BME280_init(void);
+void BME280_init();
 
 
 /*
@@ -28,7 +28,9 @@ void BME280_init(void);
  * actual temperature and humidity
  *
  */
-void BME280_calculate(void);
+void BME280_calculate();
+
+void BME280_uart();
 
 
 #endif /* API_INC_DRIVER_BME280_H_ */

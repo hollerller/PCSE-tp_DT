@@ -33,6 +33,8 @@
 #include "driver_BME280.h"
 #include "API_uart.h"
 #include "driver_LCD.h"
+#include "API_LCDhandler.h"
+
 
 /* USER CODE END Includes */
 
@@ -126,17 +128,11 @@ int main(void) {
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
-
 		BME280_calculate();
+		BME280_uart();
 		controlFSM_update();
+		LCDhandlerFSM();
 
-		char dataStr[255] = "";
-
-		sprintf(dataStr, "Temperature: %.2f Humidity: %.2f \r\n", temp, hum);
-
-		uartSendString((uint8_t*) dataStr);
-
-		HAL_Delay(500);			// no quitar
 
 	}
 	/* USER CODE END 3 */

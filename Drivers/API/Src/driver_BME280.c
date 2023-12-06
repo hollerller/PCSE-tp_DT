@@ -6,6 +6,7 @@
  */
 
 #include <stdint.h>
+#include <stdio.h>
 #include "stm32f4xx_hal.h"
 
 #include "API_delay.h"
@@ -298,3 +299,16 @@ void BME280_calculate(void) {
 	}
 
 }
+
+
+void BME280_uart(){
+
+	char dataStr[255] = "";
+
+	sprintf(dataStr, "Temperature: %.2f Humidity: %.2f \r\n", temp, hum);
+
+	uartSendString((uint8_t*) dataStr);
+
+	HAL_Delay(500);			// no quitar
+}
+

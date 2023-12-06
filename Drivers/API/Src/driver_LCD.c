@@ -89,4 +89,9 @@ void LCD_sendString(char * text){
 
 }
 
+void LCD_clear(){
+	LCD_sendCMD(0x01);	// Clear display
+	HAL_Delay(2);
+}
+
 //void LCD_sendByte(char data);

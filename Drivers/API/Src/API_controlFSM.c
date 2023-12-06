@@ -5,7 +5,7 @@
  *      Author: hollerller
  */
 
-#include <driver_BME280.h>
+#include "driver_BME280.h"
 #include "stm32f4xx_hal.h"
 #include "API_delay.h"
 #include "main.h"
@@ -36,8 +36,8 @@ typedef enum {
 
 static const uint8_t DEBOUNCETIME = 40; // Debounce delay constant
 
-delay_t debounceDelay;		// Create a variable type delay_t
-tick_t initialDelay = DEBOUNCETIME;  // Set the initial time of the delay (40ms)
+static delay_t debounceDelay;		// Create a variable type delay_t
+static tick_t initialDelay = DEBOUNCETIME;  // Set the initial time of the delay (40ms)
 
 // Variable to store the current state of the FSM
 static controlFSM_state_t controlFSM_state;
@@ -132,6 +132,7 @@ void controlFSM_update() {
 
 			}
 		}
+		break;
 
 	case H_ALERT:// State when humidity is outside thresholds but temperature is ok
 
