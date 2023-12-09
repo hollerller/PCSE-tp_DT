@@ -5,19 +5,30 @@
  *      Author: hollerller
  */
 
+
 #include "stm32f4xx_hal.h"
 
 #include <stdint.h>
+#include <string.h>
+
 #include "driver_LCD.h"
 #include "API_delay.h"
 #include "API_i2c.h"
-#include <string.h>
+
 
 #define INITIALDELAY 20
 
+/*
+ * Function used to initialize the LCD
+ * Send the initial commands to activate the display
+ * Also configure the initial settings, function set, entry mode and enabling the display
+ *
+ */
 
 
 void LCD_init(){
+
+	// Initial instructions
 
 	HAL_Delay(20);
 	LCD_sendCMD(0x30);
@@ -41,6 +52,12 @@ void LCD_init(){
 
 }
 
+/*
+ * Function used to send a command to the LCD
+ * Send command in 4 bit mode using i2c transmit function
+ *
+ */
+
 
 void LCD_sendCMD(char command){
 
@@ -58,6 +75,12 @@ void LCD_sendCMD(char command){
 	i2c_Master_Trasmit(sendCMD, 0x4E, 4);
 
 }
+
+/*
+ * Function used to send a character to the LCD
+ * Send character in 4 bit mode using i2c transmit function
+ *
+ */
 
 void LCD_sendChar(char caracter){
 
@@ -77,6 +100,13 @@ void LCD_sendChar(char caracter){
 
 }
 
+/*
+ * Function used to send a string to the LCD
+ * Iterates through the string received and
+ * uses the send character function to print each char
+ *
+ */
+
 
 void LCD_sendString(char * text){
 
@@ -89,9 +119,14 @@ void LCD_sendString(char * text){
 
 }
 
+/*
+ * Function used to clear the display
+ * Uses command 0x01 to clear the display
+ *
+ */
+
 void LCD_clear(){
 	LCD_sendCMD(0x01);	// Clear display
 	HAL_Delay(2);
 }
 
-//void LCD_sendByte(char data);

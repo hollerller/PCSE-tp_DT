@@ -12,6 +12,11 @@
 #include <stdio.h>
 #include "main.h"
 
+/*
+ * Enumeration
+ * Define variables with the LCD states
+ *
+ */
 
 typedef enum {
 	TH_CURRENT,	// State for normal values for Temperature and Humidity
@@ -20,39 +25,56 @@ typedef enum {
 
 } LCDstate_t;
 
+// Variable to store the current state of the FSM
 static LCDstate_t LCDstate;
+
+// Declares the initial values for maximum and minimum temp and hum
 
 static float maxTemp = -40;
 static float minTemp = 85;
-
 static float maxHum = 0;
 static float minHum = 100;
+
+// Save the message string to be sent via LCD
 
 char messageTemp[16] = "";
 char messageHum[16] = "";
 
+static float temp;
+static float hum;
 
-void LCDhandlerInit(){
+// Internal functions to store the minimum and maximum values
+
+static void tempMax();
+static void tempMin();
+static void humMax();
+static void humMin();
+
+void LCDhandlerInit() {
 
 	LCDstate = TH_CURRENT;
 
 }
 
+void LCDhandlerFSM() {
 
-void LCDhandlerFSM(){
+	// Calls the functions
+
+	temp = BME280_getTemp();
+	hum = BME280_getHum();
 
 	tempMax();
 	tempMin();
 	humMax();
 	humMin();
+
 	uint8_t buttonState = HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin); // Read the button state (pressed or released)
 
 	switch (LCDstate) {
 
-		case TH_CURRENT:	// State when temperature and humidity are within thresholds
+	case TH_CURRENT:	// State to send current measures to LCD
 
-
-			if (buttonState){
+		if (buttonState) {
 			LCD_clear();
 			LCD_sendCMD(0x80);
 			sprintf(messageTemp, "Temp: %.2f", temp);
@@ -65,12 +87,11 @@ void LCDhandlerFSM(){
 			LCDstate = TH_MAX;
 		}
 
+		break;
 
-			break;
+	case TH_MAX:	// State to send maximum values
 
-		case TH_MAX:// State when temperature is outside thresholds but humidity is ok
-
-			if (buttonState){
+		if (buttonState) {
 			LCD_clear();
 			LCD_sendCMD(0x80);
 			sprintf(messageTemp, "Max Temp: %.2f", maxTemp);
@@ -80,16 +101,16 @@ void LCDhandlerFSM(){
 			sprintf(messageHum, "Max Hum:  %.2f", maxHum);
 			LCD_sendString(messageHum);
 
-			} else {
-						LCDstate = TH_MIN;
-					}
+		} else {
+			LCDstate = TH_MIN;
+		}
 
-			break;
+		break;
 
-		case TH_MIN:// State when humidity is outside thresholds but temperature is ok
+	case TH_MIN:	// State to send minimum values
 
-			if (buttonState){
-				LCD_clear();
+		if (buttonState) {
+			LCD_clear();
 			LCD_sendCMD(0x80);
 			sprintf(messageTemp, "Min Temp: %.2f", minTemp);
 			LCD_sendString(messageTemp);
@@ -98,50 +119,55 @@ void LCDhandlerFSM(){
 			sprintf(messageHum, "Min Hum:  %.2f", minHum);
 			LCD_sendString(messageHum);
 
-			} else {
-									LCDstate = TH_CURRENT;
-								}
-
-			break;
-
-		default:
-			// default state for the FSM
+		} else {
 			LCDstate = TH_CURRENT;
-
-			break;
-
 		}
 
+		break;
+
+	default:
+		// default state for the FSM
+		LCDstate = TH_CURRENT;
+
+		break;
+
+	}
 
 }
 
-void tempMax(){
+/*
+ * Functions to update the maximum and minimum values of temperature and humidity
+ * read and calculated from the sensor
+ *
+ */
 
-	if (temp > maxTemp){
+static void tempMax() {
+
+	if (temp > maxTemp) {
 		maxTemp = temp;
 	}
 
 }
 
-void tempMin(){
+static void tempMin() {
 
-	if (temp < minTemp){
+	if (temp < minTemp) {
 		minTemp = temp;
 	}
 
 }
 
-void humMax(){
+static void humMax() {
 
-	if (hum > maxHum){
+	if (hum > maxHum) {
 		maxHum = hum;
 	}
 
 }
 
-void humMin(){
+static void humMin() {
 
-	if (hum < minHum){
+	if (hum < minHum) {
 		minHum = hum;
 	}
 

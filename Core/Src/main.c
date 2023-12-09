@@ -17,7 +17,7 @@
  */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include <driver_LCD.h>
+
 #include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -29,11 +29,12 @@
 
 #include "API_delay.h"
 #include "API_i2c.h"
+#include "API_uart.h"
 #include "API_controlFSM.h"
 #include "driver_BME280.h"
-#include "API_uart.h"
 #include "driver_LCD.h"
 #include "API_LCDhandler.h"
+
 
 
 /* USER CODE END Includes */
@@ -110,15 +111,6 @@ int main(void) {
 	BME280_init();	// Initializes the sensor with the initial parameters
 	controlFSM_init();	// Initializes the FSM
 	LCD_init();		// Initializes the LCD
-
-	//char a[16] = "Patrocinado por";
-	//LCD_sendString(a);
-	//HAL_Delay(500);
-	//LCD_sendCMD(0xC0);
-
-	//char b[16] = "Asotoba";
-	//		LCD_sendString(b);
-//	HAL_Delay(500);
 
 	/* USER CODE END 2 */
 
