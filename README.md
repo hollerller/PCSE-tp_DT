@@ -4,3 +4,7 @@
 
 ## Descripción
 Control de temperatura y humedad utilizando un microcontrolador STM32 NUCLEO F401RE y un sensor BME280
+
+#### Video demostrativo
+
+https://www.youtube.com/watch?v=0gbHymrJCVU
